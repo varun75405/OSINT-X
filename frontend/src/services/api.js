@@ -1,37 +1,55 @@
 import axios from "axios";
 
-const baseURL = "http://127.0.0.1:8000";
+// Render Backend URL
+const baseURL = "https://osint-x-h72j.onrender.com";
 
-const api = axios.create({ baseURL });
+const api = axios.create({
+baseURL,
+headers: {
+"Content-Type": "application/json",
+},
+});
 
 api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("access_token") || localStorage.getItem("token");
-    if (token) {
-      config.headers = config.headers || {};
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
+(config) => {
+const token =
+localStorage.getItem("access_token") ||
+localStorage.getItem("token");
+
+if (token) {
+  config.headers = config.headers || {};
+  config.headers.Authorization = `Bearer ${token}`;
+}
+
+return config;
+
+},
+(error) => Promise.reject(error)
 );
 
 api.interceptors.response.use(
-  (res) => res,
-  (error) => {
-    if (error && error.response) {
-      if (error.response.status === 401) {
-        localStorage.removeItem("access_token");
-      }
-      return Promise.reject(error.response.data || error.response);
-    }
-    return Promise.reject(error);
-  }
+(response) => response,
+(error) => {
+if (error?.response?.status === 401) {
+localStorage.removeItem("access_token");
+localStorage.removeItem("token");
+}
+
+return Promise.reject(
+  error?.response?.data || error
 );
 
-export function setAuthToken(token) {
-  if (token) localStorage.setItem("access_token", token);
-  else localStorage.removeItem("access_token");
 }
+);
+
+export const setAuthToken = (token) => {
+if (token) {
+localStorage.setItem("access_token", token);
+localStorage.setItem("token", token);
+} else {
+localStorage.removeItem("access_token");
+localStorage.removeItem("token");
+}
+};
 
 export default api;
