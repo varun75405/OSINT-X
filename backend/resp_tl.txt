@@ -1,0 +1,1 @@
+{"id":4,"event_type":"Note","timestamp":"2026-06-18T18:08:00.490241","case_id":3,"event":"Initial triage"}

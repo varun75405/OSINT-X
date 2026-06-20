@@ -1,0 +1,1 @@
+{"value":"8.8.8.8","id":5,"severity":"High","case_id":3,"ioc_type":"ip"}

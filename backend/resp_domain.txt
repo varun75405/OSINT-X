@@ -1,0 +1,1 @@
+{"domain":"example.com","whois":{"registrar":"RESERVED-Internet Assigned Numbers Authority","creation_date":"1995-08-14 04:00:00+00:00","expiration_date":"2026-08-13 04:00:00+00:00","name_servers":["ELLIOTT.NS.CLOUDFLARE.COM","HERA.NS.CLOUDFLARE.COM"]},"dns":{"A":["104.20.23.154","172.66.147.243"],"MX":["."]}}

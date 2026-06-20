@@ -1,0 +1,1 @@
+{"technique_id":"T1190","tactic":"Initial Access","id":4,"case_id":3,"technique_name":"Exploit Public-Facing Application"}
