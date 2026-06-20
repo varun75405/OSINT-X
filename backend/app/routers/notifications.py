@@ -2,8 +2,6 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
-from app.core.deps import get_current_user
-from app.models.user import User
 from app.models.timeline import Timeline
 from app.models.ioc import IOC
 from app.models.case import Case
@@ -15,7 +13,6 @@ router = APIRouter(prefix="/notifications", tags=["Notifications"])
 @router.get("/")
 def get_notifications(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """
     No dedicated notifications table needed — this derives a live feed from:

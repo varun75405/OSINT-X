@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Cases from "./pages/Cases";
 import IOC from "./pages/IOC";
@@ -17,8 +16,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<AppLayout><Dashboard /></AppLayout>} />
+        <Route path="/" element={<AppLayout><Dashboard /></AppLayout>} />
+        <Route path="/dashboard" element={<Navigate to="/" replace />} />
         <Route path="/cases" element={<AppLayout><Cases /></AppLayout>} />
         <Route path="/ioc" element={<AppLayout><IOC /></AppLayout>} />
         <Route path="/timeline" element={<AppLayout><Timeline /></AppLayout>} />

@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 
 const LINKS = [
-  { to: "/dashboard", label: "Dashboard", icon: <FaHome /> },
+  { to: "/", label: "Dashboard", icon: <FaHome /> },
   { to: "/cases", label: "Cases", icon: <FaFolderOpen /> },
   { to: "/ioc", label: "IOC Database", icon: <FaBug /> },
   { to: "/timeline", label: "Timeline", icon: <FaClock /> },

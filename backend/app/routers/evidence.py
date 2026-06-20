@@ -7,8 +7,6 @@ import os
 import hashlib
 
 from app.core.database import get_db
-from app.core.deps import get_current_user
-from app.models.user import User
 from app.models.evidence import Evidence
 
 router = APIRouter(prefix="/evidence", tags=["Evidence"])
@@ -22,7 +20,6 @@ async def upload_evidence(
     file: UploadFile = File(...),
     case_id: Optional[int] = Form(None),
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     content = await file.read()
     sha256 = hashlib.sha256(content).hexdigest()
@@ -34,7 +31,7 @@ async def upload_evidence(
 
     ev = Evidence(
         case_id=case_id,
-        uploaded_by=current_user.id,
+        uploaded_by=None,
         filename=safe_name,
         original_filename=file.filename,
         extension=os.path.splitext(file.filename)[1],
@@ -58,7 +55,6 @@ async def upload_evidence(
 @router.get("/")
 def list_evidence(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     rows = db.query(Evidence).order_by(Evidence.uploaded_at.desc()).all()
     return [
@@ -75,7 +71,6 @@ def list_evidence(
 def list_evidence_for_case(
     case_id: int,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """This is the missing Evidence-Case relationship view used on CaseDetails."""
     rows = db.query(Evidence).filter(Evidence.case_id == case_id).order_by(Evidence.uploaded_at.desc()).all()
@@ -93,7 +88,6 @@ def list_evidence_for_case(
 def download_evidence(
     evidence_id: int,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     ev = db.query(Evidence).filter(Evidence.id == evidence_id).first()
     if not ev:
@@ -108,7 +102,6 @@ def download_evidence(
 def delete_evidence(
     evidence_id: int,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     ev = db.query(Evidence).filter(Evidence.id == evidence_id).first()
     if not ev:

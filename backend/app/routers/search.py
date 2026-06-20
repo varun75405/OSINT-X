@@ -3,8 +3,6 @@ from sqlalchemy.orm import Session
 from sqlalchemy import or_
 
 from app.core.database import get_db
-from app.core.deps import get_current_user
-from app.models.user import User
 from app.models.case import Case
 from app.models.ioc import IOC
 from app.models.mitre import MitreMapping
@@ -17,7 +15,6 @@ router = APIRouter(prefix="/search", tags=["Global Search"])
 def global_search(
     q: str = Query(..., min_length=1),
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """
     One query box -> results from Cases, IOCs, Evidence, and MITRE mappings.

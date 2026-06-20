@@ -1,9 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.core.database import get_db
-from app.core.deps import get_current_user
 from app.models.case import Case
-from app.models.user import User
 from app.models.ioc import IOC
 from app.models.mitre import MitreMapping
 from app.models.timeline import Timeline
@@ -17,7 +15,6 @@ router = APIRouter(prefix="/cases", tags=["Cases"])
 def create_case(
     case: CaseCreate,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     db_case = Case(
         title=case.title,
@@ -33,7 +30,6 @@ def create_case(
 @router.get("/", response_model=list[CaseResponse])
 def get_cases(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     return db.query(Case).all()
 
@@ -42,7 +38,6 @@ def get_cases(
 def get_case(
     case_id: int,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     case = db.query(Case).filter(Case.id == case_id).first()
     if not case:
@@ -54,7 +49,6 @@ def get_case(
 def delete_case(
     case_id: int,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     case = db.query(Case).filter(Case.id == case_id).first()
     if not case:

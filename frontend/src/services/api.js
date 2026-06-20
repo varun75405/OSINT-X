@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// Render Backend URL
-const baseURL = "https://osint-x-h72j.onrender.com";
+// Local development backend
+const baseURL = "http://localhost:8000";
 
 const api = axios.create({
 baseURL,

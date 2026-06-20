@@ -4,8 +4,6 @@ from fastapi import Depends
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
-from app.core.deps import get_current_user
-from app.models.user import User
 
 from app.models.case import Case
 from app.models.ioc import IOC
@@ -45,7 +43,6 @@ def dashboard_stats(
 @router.get("/summary")
 def dashboard_summary(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """NEW: the 6 KPI cards with sparkline + week-over-week delta."""
     return dashboard_service.get_summary_cards(db)
@@ -55,7 +52,6 @@ def dashboard_summary(
 def dashboard_trend(
     days: int = 7,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """NEW: line chart data for 'Incident Trend'."""
     return dashboard_service.get_incident_trend(db, days)
@@ -64,7 +60,6 @@ def dashboard_trend(
 @router.get("/ioc-distribution")
 def ioc_distribution(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """NEW: donut chart — IOC severity breakdown."""
     return dashboard_service.get_ioc_severity_distribution(db)
@@ -73,7 +68,6 @@ def ioc_distribution(
 @router.get("/ioc-types")
 def ioc_types(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """NEW: donut chart — IOC type breakdown (Top IOC Types)."""
     return dashboard_service.get_ioc_type_distribution(db)
@@ -82,7 +76,6 @@ def ioc_types(
 @router.get("/mitre-coverage")
 def mitre_coverage(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """NEW: donut chart — tactic/technique coverage."""
     return dashboard_service.get_mitre_coverage(db)
@@ -91,7 +84,6 @@ def mitre_coverage(
 @router.get("/active-investigations")
 def active_investigations(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """NEW: table data for 'Active Investigations'."""
     return dashboard_service.get_active_investigations(db)
@@ -100,7 +92,6 @@ def active_investigations(
 @router.get("/recent-alerts")
 def recent_alerts(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """NEW: list data for 'Recent Alerts'."""
     return dashboard_service.get_recent_alerts(db)

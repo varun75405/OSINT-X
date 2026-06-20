@@ -1,4 +1,5 @@
 from passlib.context import CryptContext
+
 pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # Test with the existing hash

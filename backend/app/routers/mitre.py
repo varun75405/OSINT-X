@@ -5,8 +5,6 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
-from app.core.deps import get_current_user
-from app.models.user import User
 
 from app.models.case import Case
 from app.models.mitre import MitreMapping
@@ -28,7 +26,6 @@ router = APIRouter(
 def auto_mitre_for_case(
     case_id: int,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """Auto-derived ATT&CK suggestions for one case — no manual typing needed."""
     return auto_map_case(db, case_id)
@@ -37,7 +34,6 @@ def auto_mitre_for_case(
 @router.get("/auto/all")
 def auto_mitre_all(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
 ):
     """Auto-derived ATT&CK suggestions across every case."""
     return auto_map_all(db)
