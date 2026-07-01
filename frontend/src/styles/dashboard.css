@@ -560,6 +560,200 @@ input::placeholder {
 .login-card-dark {
   background: var(--bg-panel);
   border: 1px solid var(--border-soft);
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.page-subtitle {
+  color: var(--text-muted-soft);
+  font-size: 0.88rem;
+  margin-bottom: 20px;
+}
+
+/* ---------- Panels / cards ---------- */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.panel-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.panel-link {
+  font-size: 0.78rem;
+  color: var(--accent-blue);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ---------- KPI cards ---------- */
+.kpi-card {
+  border-radius: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--border-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card .kpi-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.kpi-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.kpi-value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.kpi-delta {
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.kpi-delta.up { color: var(--accent-green); }
+.kpi-delta.down { color: var(--accent-red); }
+
+.kpi-blue   { background: rgba(59,130,246,0.08); }
+.kpi-red    { background: rgba(239,68,68,0.08); }
+.kpi-orange { background: rgba(245,158,11,0.08); }
+.kpi-green  { background: rgba(34,197,94,0.08); }
+.kpi-purple { background: rgba(168,85,247,0.08); }
+.kpi-cyan   { background: rgba(6,182,212,0.08); }
+
+/* ---------- Tables ---------- */
+.table-dark-clean {
+  width: 100%;
+  font-size: 0.82rem;
+}
+
+.table-dark-clean th {
+  color: var(--text-muted);
+  font-weight: 500;
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.table-dark-clean td {
+  padding: 8px 8px;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-primary);
+}
+
+.badge-soft {
+  font-size: 0.68rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.badge-soft.high, .badge-soft.critical { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+.badge-soft.medium { background: rgba(245,158,11,0.15); color: var(--accent-orange); }
+.badge-soft.low { background: rgba(34,197,94,0.15); color: var(--accent-green); }
+.badge-soft.open, .badge-soft.inprogress { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
+.badge-soft.closed { background: rgba(141,147,166,0.15); color: var(--text-muted); }
+
+.mini-progress {
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--border-soft);
+  overflow: hidden;
+}
+
+.mini-progress > div {
+  height: 100%;
+  background: var(--accent-blue);
+}
+
+/* ---------- Alert / activity rows ---------- */
+.alert-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.alert-row:last-child { border-bottom: none; }
+
+.alert-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.alert-dot.high, .alert-dot.critical { background: var(--accent-red); }
+.alert-dot.medium { background: var(--accent-orange); }
+.alert-dot.low { background: var(--accent-green); }
+
+.alert-text { flex: 1; }
+.alert-title { font-size: 0.82rem; color: var(--text-primary); }
+.alert-detail { font-size: 0.74rem; color: var(--text-muted); }
+.alert-time { font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; }
+
+/* ---------- Donut legend ---------- */
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  margin-bottom: 8px;
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-label { color: var(--text-muted); flex: 1; }
+.legend-value { color: var(--text-primary); font-weight: 600; }
+
+/* ---------- Login ---------- */
+.login-dark-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-page);
+}
+
+.login-card-dark {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
   border-radius: 16px;
   padding: 36px;
   width: 380px;
@@ -567,14 +761,9 @@ input::placeholder {
 
 /* =====================================================
    RESPONSIVE FIXES FOR OSINT-X
-   Add at END of dashboard.css
 ===================================================== */
 
-/* Global */
-
-html,
-body,
-#root {
+html, body, #root {
   width: 100%;
   min-height: 100%;
   overflow-x: hidden;
@@ -594,243 +783,170 @@ body,
   overflow-x: hidden;
 }
 
-/* Panels */
-
 .panel {
   width: 100%;
 }
-
-/* Tables */
 
 .table-responsive {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Sidebar */
-
 .sidebar-dark {
-  transition: all 0.3s ease;
-}
-
-/* ==========================
-   Tablet
-========================== */
-
-@media (max-width: 1200px) {
-
-  .content-area {
-    padding: 20px;
-  }
-
-  .topbar-search {
-    max-width: 320px;
-  }
-
-}
-
-/* ==========================
-   Mobile
-========================== */
-
-@media (max-width: 992px) {
-
-  .sidebar-dark {
-    position: fixed;
-    top: 0;
-    left: -240px;
-    z-index: 9999;
-    height: 100vh;
-  }
-
-  .sidebar-dark.open {
-    left: 0;
-  }
-
-  .content-area {
-    width: 100%;
-    padding: 16px;
-  }
-
-  .topbar-dark {
-    padding: 12px 16px;
-  }
-
-  .topbar-search {
-    max-width: 100%;
-  }
-
-}
-
-/* ==========================
-   Phone
-========================== */
-
-@media (max-width: 768px) {
-
-  .content-area {
-    padding: 12px;
-  }
-
-  .page-title {
-    font-size: 1.2rem;
-  }
-
-  .page-subtitle {
-    font-size: 0.8rem;
-  }
-
-  .topbar-dark {
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .topbar-search {
-    width: 100%;
-    max-width: 100%;
-    order: 2;
-  }
-
-  .topbar-search input {
-    font-size: 0.8rem;
-  }
-
-  .kpi-card {
-    padding: 14px;
-    margin-bottom: 12px;
-  }
-
-  .kpi-value {
-    font-size: 1.3rem;
-  }
-
-  .panel {
-    padding: 14px;
-  }
-
-  .panel-title {
-    font-size: 0.85rem;
-  }
-
-  .table-dark-clean {
-    min-width: 650px;
-  }
-
-  .alert-title {
-    font-size: 0.75rem;
-  }
-
-  .alert-detail {
-    font-size: 0.7rem;
-  }
-
-}
-
-/* ==========================
-   Small Phones
-========================== */
-
-@media (max-width: 576px) {
-
-  .content-area {
-    padding: 10px;
-  }
-
-  .page-title {
-    font-size: 1rem;
-  }
-
-  .page-subtitle {
-    font-size: 0.75rem;
-  }
-
-  .sidebar-dark {
-    width: 220px;
-    left: -220px;
-  }
-
-  .avatar-circle {
-    width: 28px;
-    height: 28px;
-    font-size: 0.7rem;
-  }
-
-  .kpi-value {
-    font-size: 1.1rem;
-  }
-
-  .kpi-label {
-    font-size: 0.7rem;
-  }
-
-  .panel {
-    border-radius: 10px;
-  }
-
-}
-
-/* ==========================
-   Correlation Graph
-========================== */
-
-.correlation-panel {
-  height: 320px;
-}
-
-@media (max-width: 768px) {
-
-  .correlation-panel {
-    height: 220px;
-  }
-
+  transition: transform 0.3s ease;
 }
 
 .mobile-menu-btn {
   display: none;
 }
 
-@media (max-width: 768px) {
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+  z-index: 9997;
+}
 
+.correlation-panel {
+  height: 320px;
+}
+
+/* ==========================
+   Tablet (<= 992px)
+===================================================== */
+@media (max-width: 992px) {
   .mobile-menu-btn {
     display: flex;
     position: fixed;
     top: 15px;
     left: 15px;
     z-index: 9999;
-
     width: 44px;
     height: 44px;
-
     border: none;
     border-radius: 10px;
-
-    background: #111624;
-    color: white;
-
+    background: var(--bg-panel);
+    border: 1px solid var(--border-soft);
+    color: var(--text-primary);
     align-items: center;
     justify-content: center;
-
     font-size: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 
   .sidebar-dark {
     position: fixed;
-    left: -260px;
     top: 0;
+    left: 0;
+    transform: translateX(-100%);
     z-index: 9998;
-
-    width: 240px;
     height: 100vh;
-
-    transition: left .3s ease;
   }
 
   .sidebar-dark.show {
-    left: 0;
+    transform: translateX(0);
+  }
+
+  .sidebar-dark.show ~ .mobile-overlay {
+    display: block;
+  }
+
+  .topbar-dark {
+    padding: 15px 20px 15px 70px; /* Space for hamburger */
   }
 
   .content-area {
+    padding: 20px;
+  }
+
+  .topbar-search {
+    max-width: 100%;
+  }
+}
+
+/* ==========================
+   Mobile (<= 768px)
+===================================================== */
+@media (max-width: 768px) {
+  .topbar-dark {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 16px 12px 64px;
+  }
+
+  .topbar-search {
     width: 100%;
-    padding: 15px;
+    order: 3;
+    max-width: 100%;
+  }
+
+  .ms-auto.d-flex {
+    margin-left: auto !important;
+  }
+  
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .content-area {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 1.25rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+  }
+
+  .kpi-card {
+    padding: 14px;
+  }
+
+  .kpi-value {
+    font-size: 1.4rem;
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  .correlation-panel {
+    height: 250px;
+  }
+
+  .alert-title {
+    font-size: 0.8rem;
+  }
+  
+  .table-dark-clean {
+    min-width: 600px; /* force scroll */
+  }
+}
+
+/* ==========================
+   Small Phones (<= 576px)
+===================================================== */
+@media (max-width: 576px) {
+  .topbar-dark {
+    padding: 10px 12px 10px 60px;
+  }
+  .mobile-menu-btn {
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+  }
+  .content-area {
+    padding: 10px;
+  }
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }

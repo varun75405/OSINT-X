@@ -125,7 +125,7 @@ function Navbar() {
 
         <div className="d-flex align-items-center gap-2 ms-2">
           <div className="avatar-circle">{(user.username || "AD").slice(0, 2).toUpperCase()}</div>
-          <div>
+          <div className="hide-on-mobile">
             <div style={{ fontSize: "0.8rem", fontWeight: 600 }}>{user.username || "Admin"}</div>
             <div style={{ fontSize: "0.68rem", color: "var(--text-muted)" }}>Administrator</div>
           </div>
