@@ -173,7 +173,7 @@ function Cases() {
                             borderRadius: "8px"
                         }}
                     >
-                        <option>All Priorities</option>
+                        <option value="All">All Priorities</option>
                         <option>Low</option>
                         <option>Medium</option>
                         <option>High</option>
@@ -191,7 +191,7 @@ function Cases() {
                             borderRadius: "8px"
                         }}
                     >
-                        <option>All Statuses</option>
+                        <option value="All">All Statuses</option>
                         <option>Open</option>
                         <option>Closed</option>
                         <option>Pending</option>

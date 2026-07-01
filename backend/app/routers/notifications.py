@@ -49,5 +49,5 @@ def get_notifications(
             "timestamp": None,
         })
 
-    notifications.sort(key=lambda n: n["timestamp"] or "", reverse=True)
+    notifications.sort(key=lambda n: (n["timestamp"].isoformat() if n["timestamp"] else ""), reverse=True)
     return {"notifications": notifications, "unread_count": len(notifications)}

@@ -58,10 +58,10 @@ function Dashboard() {
 
   if (loading) {
     return (
-      <AppLayout>
+      <div>
         <div className="page-title">Dashboard</div>
         <p className="text-muted">Loading dashboard...</p>
-      </AppLayout>
+      </div>
     );
   }
 

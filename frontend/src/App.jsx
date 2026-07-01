@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api, { setAuthToken } from "./services/api";
 
 import Dashboard from "./pages/Dashboard";
 import Cases from "./pages/Cases";
@@ -13,6 +15,35 @@ import Correlation from "./pages/Correlation";
 import AppLayout from "./layouts/Layout";
 
 function App() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    // Auto-authenticate: if no token exists, login silently with default creds
+    const token = localStorage.getItem("token") || localStorage.getItem("access_token");
+    if (token) {
+      setReady(true);
+      return;
+    }
+
+    // Try to auto-login with the seeded admin user
+    (async () => {
+      try {
+        const res = await api.post("/auth/login", {
+          email: "admin@osintx.com",
+          password: "admin123",
+        });
+        setAuthToken(res.data.access_token);
+        localStorage.setItem("user", JSON.stringify({ username: "admin" }));
+      } catch {
+        // If login fails (e.g. local dev with no auth), that's fine
+        console.log("Auto-login skipped (no auth required or user not found)");
+      }
+      setReady(true);
+    })();
+  }, []);
+
+  if (!ready) return null; // Brief pause while auto-login runs
+
   return (
     <BrowserRouter>
       <Routes>

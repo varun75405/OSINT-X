@@ -29,7 +29,7 @@ function CaseDetails() {
                     api.get(`/ioc/case/${id}`),
                     api.get(`/timeline/case/${id}`),
                     api.get(`/mitre/case/${id}`),
-                    api.get(`/ correlation/case/${id}`).catch(() => ({ data: { shared_iocs: [] } })),
+                    api.get(`/correlation/case/${id}`).catch(() => ({ data: { shared_iocs: [] } })),
                 ]);
 
                 if (mounted) {
@@ -174,8 +174,8 @@ function CaseDetails() {
                                                 </div>
                                                 <h6 className="text-muted">Shared by cases:</h6>
                                                 <div>
-                                                    {corr.cases.map((caseId) => (
-                                                        <span key={caseId} className="badge bg-secondary me-2">Case #{caseId}</span>
+                                                    {corr.cases.map((c) => (
+                                                        <span key={c.case_id} className="badge bg-secondary me-2">Case #{c.case_id}</span>
                                                     ))}
                                                 </div>
                                             </div>
@@ -197,7 +197,7 @@ function CaseDetails() {
                     <div className="panel">
                         <div className="panel-header">
                             <span className="panel-title">Report Preview</span>
-                            <button className="btn btn-sm btn-primary" onClick={() => window.open(`http://127.0.0.1:8000/report/case/${id}`)}>
+                            <button className="btn btn-sm btn-primary" onClick={() => window.open(`${api.defaults.baseURL}/report/case/${id}`)}>
                                 Generate Report (PDF)
                             </button>
                         </div>
